@@ -1,4 +1,13 @@
 class ItemsController < ApplicationController
   def index
   end
+
+  def create
+  end
+
+  private
+
+  def item_params
+    params.require(:item).permit(:name, :price, :sku, :description, :image)
+  end
 end
