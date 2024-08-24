@@ -23,7 +23,7 @@
                             <div class="card-body p-4">
                                 <div class="text-center">
                                     <!-- Product name-->
-                                    <h5 class="fw-bolder"><%= item.name %>
+                                    <h5 class="fw-bolder"><%= link_to item.name, item, class: "link" %>
                                     </h5>
                                     <!-- Product price-->
                                     ¥<%= item.price %>
