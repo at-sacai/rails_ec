@@ -18,7 +18,7 @@
                         <div class="card h-100">
                             <!-- Product image-->
                             <img class="card-img-top" alt: '...'
-                            <%= image_tag item.image %>
+                            <%= image_tag item.image.variant(resize: "450x300") %>
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
