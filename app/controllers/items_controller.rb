@@ -5,6 +5,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @recent_items = Item.order(created_at: :desc).limit(4)
   end
 
   def create
