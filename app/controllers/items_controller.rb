@@ -1,11 +1,11 @@
 class ItemsController < ApplicationController
   def index
-    @items = Item.all
+    @items = Item.with_attached_image.all
   end
 
   def show
     @item = Item.find(params[:id])
-    @recent_items = Item.order(created_at: :desc).limit(4)
+    @recent_items = Item.with_attached_image.order(created_at: :desc).limit(4)
   end
 
   def create
