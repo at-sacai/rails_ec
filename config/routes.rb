@@ -7,4 +7,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "items#index"
   resources :items, only: [:index, :create, :show]
+  namespace :admin do
+    resources :items, only:[:index, :show, :edit, :new]
+  end
 end
