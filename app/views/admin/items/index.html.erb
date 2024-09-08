@@ -1,0 +1,51 @@
+        <!-- Navigation-->
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+          <div class="container px-4 px-lg-5"><%= link_to "Atsuzon / Admin", items_path, class: "navbar-brand"%> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                <li class="nav-item"><%= link_to "Home", items_path, class: "nav-link active", 'area-current': :page %></li>
+              </ul>
+              <div class="pull-right">
+                <%= link_to "Add items", items_path, class: "btn btn-primary pull-right", 'area-current': :page %>
+              </div>
+            </div>
+          </div>
+        </nav>
+        <!-- Header-->
+        <header class="bg-dark py-5">
+          <div class="container px-4 px-lg-5 my-5">
+            <div class="text-center text-white">
+              <h1 class="display-4 fw-bolder">Atsuzon / Admin</h1>
+            </div>
+          </div>
+        </header>
+        <div class="p-5">
+        <table class="table">
+          <thead>
+            <tr>
+                <% @items.column_names.each do |column| %>
+                    <th><%= column %></th>
+                <% end %>
+            </tr>
+          </thead>
+          <tbody>
+            <% @items.each do |item| %>
+            <tr>
+              <td><%= item.id %></td>
+              <td><%= item.name %></td>
+              <td><%= item.description %></td>
+              <td><%= item.price %></td>
+              <td><%= item.created_at.to_s(:datetime_jp) %></td>
+              <td><%= item.updated_at.to_s(:datetime_jp) %></td>
+              <td><%= image_tag item.image.variant(resize: "450x300") %></td>
+              <td><%= link_to 'edit', item, class: 'btn btn-outline-dark' %></td>
+              <td><%= link_to 'delete', item, class: 'btn btn-outline-dark', method: :delete %></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+        </div>
+        <!-- Footer-->
+        <%= render 'footer' %>
