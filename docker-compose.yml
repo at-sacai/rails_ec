@@ -15,9 +15,11 @@ services:
       - bundle:/usr/local/bundle
       - node_modules:/myapp/node_modules
     ports:
-      - "3000:3000"
+      - '3000:3000'
     depends_on:
       - db
+    env_file:
+      - .env
   js:
     image: rails_template:latest
     command: yarn build --watch
