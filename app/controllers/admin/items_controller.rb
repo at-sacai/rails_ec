@@ -2,7 +2,7 @@ class Admin::ItemsController < ApplicationController
   before_action :basic_auth
 
   def index
-    @items = Item.all
+    @items = Item.with_attached_image.all
   end
 
   def new
@@ -25,11 +25,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
+    @item = Item.with_attached_image.find(params[:id])
   end
 
   def update
-    @item = Item.find(params[:id])
+    @item = Item.with_attached_image.find(params[:id])
 
     if @item.update(item_params)
       flash[:notice] = 'Update complete.'
@@ -41,7 +41,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
+    item = Item.with_attached_image.find(params[:id])
     item.destroy
     flash[:notice] = 'Deletion complete.'
     redirect_to admin_items_path, status: :see_other
