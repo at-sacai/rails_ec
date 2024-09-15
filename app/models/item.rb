@@ -12,7 +12,7 @@
 #
 class Item < ApplicationRecord
   validates :name, presence: true
-  validates :price, presence: true
+  validates :price, presence: true, numericality: true
   validates :description, presence: true
   has_one_attached :image do |attachable|
     attachable.variant :thumb, resize_to_limit: [450, 300]
