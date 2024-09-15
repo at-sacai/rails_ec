@@ -6,6 +6,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new(flash[:item])
   end
 
   def create

@@ -1,11 +1,11 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container px-4 px-lg-5"><%= link_to "Atsuzon / Admin", items_path, class: "navbar-brand"%> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <div class="container px-4 px-lg-5"><%= link_to "Atsuzon / Admin", admin_items_path, class: "navbar-brand"%><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><%= link_to "Home", items_path, class: "nav-link active", 'area-current': :page %></li>
+                <li class="nav-item"><%= link_to "Home / Admin", admin_items_path, class: "nav-link active", 'area-current': :page %></li>
               </ul>
             </div>
           </div>
@@ -18,5 +18,17 @@
             </div>
           </div>
         </header>
+        <%= form_for @item do |f| %>
+            <div class="form-group">
+                <%= f.label :name, 'name' %>
+                <%= f.text_field :name, class: 'form-control' %>
+            </div>
+            <div class="form-group">
+                <%= f.label :description, 'description' %>
+                <%= f.text_field :description, class: 'form-control' %>
+            </div>
+            </div>
+            <%= f.submit '保存', class: 'btn btn-primary' %>
+        <% end %>
         <!-- Footer-->
         <%= render 'footer' %>
