@@ -24,7 +24,21 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def edit; end
+  def edit
+    @item = Item.find(params[:id])
+  end
+
+  def update
+    @item = Item.find(params[:id])
+
+    if @item.update(item_params)
+      flash[:notice] = 'Update complete.'
+      redirect_to admin_items_path
+    else
+      flash[:alert] = 'Update failed.'
+      render :edit
+    end
+  end
 
   def destroy
     item = Item.find(params[:id])
