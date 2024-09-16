@@ -39,7 +39,7 @@ module Admin
         redirect_to admin_items_path
       else
         flash[:alert] = 'Update failed.'
-        render :edit
+        redirect_to admin_item_path
       end
     end
 
