@@ -12,10 +12,14 @@ module Admin
       @item = Item.new
     end
 
+    def edit
+      @item = Item.with_attached_image.find(params[:id])
+    end
+
     def create
       item = Item.new(item_params)
       unless item.image.attached?
-        item.image.attach(io: File.open(Rails.root.join('app/assets/images/sample.png')), filename: 'sample.png')
+        item.image.attach(io: Rails.root.join('app/assets/images/sample.png').open, filename: 'sample.png')
       end
 
       if item.save
@@ -25,10 +29,6 @@ module Admin
         flash[:alert] = 'Registration failed.'
         render 'new', status: :unprocessable_entity
       end
-    end
-
-    def edit
-      @item = Item.with_attached_image.find(params[:id])
     end
 
     def update
