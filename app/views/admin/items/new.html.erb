@@ -1,50 +1,50 @@
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-          <div class="container px-4 px-lg-5"><%= link_to "Atsuzon", admin_items_path, class: "navbar-brand"%><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                <li class="nav-item"><%= link_to "Admin Home", admin_items_path, class: "nav-link active", 'area-current': :page %></li>
-              </ul>
-            </div>
-          </div>
-        </nav>
-        <% if flash[:alert] %>
-          <p class="alert alert-danger text-center"><%= flash[:alert] %></p>
-        </div>
-        <% end %>
-        <!-- Header-->
-        <header class="bg-dark py-5">
-          <div class="container px-4 px-lg-5 my-5">
-            <div class="text-center text-white">
-              <h1 class="display-4 fw-bolder">Atsuzon</h1>
-            </div>
-          </div>
-        </header>
-        <div class="p-5">
-        <h2 class="mb-3">Add Items</h2>
-        <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
-            <div class="form-group">
-                <%= f.label(:name, "name") %>
-                <%= f.text_field :name, class: 'form-control' %>
-            </div>
-            <div class="form-group my-3">
-                <%= f.label(:price, "price") %>
-                <%= f.text_field :price, class: 'form-control' %>
-            </div>
-            <div class="form-group my-3">
-                <%= f.label(:description, "description") %>
-                <%= f.text_field :description, class: 'form-control' %>
-            </div>
-            <div class="form-group my-3">
-                <%= f.label(:image, "image") %>
-                <%= f.file_field :image, class: 'form-control' %>
-            </div>
-            <div>
-            <%= f.submit 'Save', class: 'btn btn-primary' %>
-            </div>
-        <% end %>
-        </div>
-        <!-- Footer-->
-        <%= render 'footer' %>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5"><%= link_to "Atsuzon", admin_items_path, class: "navbar-brand"%><button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><%= link_to "Admin Home", admin_items_path, class: "nav-link active", 'area-current': :page %></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<% if flash[:alert] %>
+  <p class="alert alert-danger text-center"><%= flash[:alert] %></p>
+</div>
+<% end %>
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Atsuzon</h1>
+    </div>
+  </div>
+</header>
+<div class="p-5">
+  <h2 class="mb-3">Add Items</h2>
+  <%= form_with model: @item, url: admin_items_path, method: :post do |f| %>
+    <div class="form-group">
+      <%= f.label(:name, "name") %>
+      <%= f.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group my-3">
+      <%= f.label(:price, "price") %>
+      <%= f.text_field :price, class: 'form-control' %>
+    </div>
+    <div class="form-group my-3">
+      <%= f.label(:description, "description") %>
+      <%= f.text_field :description, class: 'form-control' %>
+    </div>
+    <div class="form-group my-3">
+      <%= f.label(:image, "image") %>
+      <%= f.file_field :image, class: 'form-control' %>
+    </div>
+    <div>
+      <%= f.submit 'Save', class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
+<!-- Footer-->
+<%= render 'footer' %>
