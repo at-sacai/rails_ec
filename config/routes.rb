@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root "items#index"
-  resources :items, only: [:index, :create, :show]
+  root 'items#index'
+  resources :items, only: %i[index create show]
+  namespace :admin do
+    resources :items, only: %i[index new create edit update destroy]
+  end
 end
