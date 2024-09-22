@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  get 'cart_items/index'
+  get 'cart' => 'cart_items#index'
   get 'cart_items/create'
   get 'cart_items/destroy'
   resources :tasks
