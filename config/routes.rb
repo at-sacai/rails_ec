@@ -2,8 +2,7 @@
 
 Rails.application.routes.draw do
   get 'cart' => 'cart_items#index'
-  get 'cart_items/create'
-  get 'cart_items/destroy'
+  post 'cart/:item_id/' => 'cart_items#create'
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
