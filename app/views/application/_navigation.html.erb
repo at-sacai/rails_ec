@@ -11,9 +11,9 @@
       <form class="d-flex">
         <%= link_to cart_path, style: "text-decoration: none;" do %>
           <button class="btn btn-outline-dark" type="button">
-          <i class="bi-cart-fill me-1"></i>
-          Cart
-          <span class="badge bg-dark text-white ms-1 rounded-pill"><%= @cart.cart_items.length %></span>
+            <i class="bi-cart-fill me-1"></i>
+            Cart
+            <span class="badge bg-dark text-white ms-1 rounded-pill"><%= @cart.cart_items.length %></span>
           </button>
         <% end %>
       </form>
