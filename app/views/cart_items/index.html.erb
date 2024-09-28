@@ -26,30 +26,35 @@
           <span class="badge bg-primary rounded-pill"><%= @cart.cart_items.length %></span>
         </h4>
         <ul class="list-group mb-3">
-          <% @cart.cart_items.each do |cart_item| %>
-            <li class="list-group-item d-flex justify-content-between lh-sm">
-              <div>
-                <h6 class="my-0"><%= cart_item.item.name %></h6>
-                <small class="text-body-secondary"><%= cart_item.item.description %></small>
-              </div>
-              <span class="text-body-secondary">Quantity: <%= cart_item.quantity %>, ¥<%= cart_item.item.price * cart_item.quantity %></span>
-              <div>
-                <%= link_to "Delete", "/cart/#{cart_item.id}", class: 'btn btn-danger', data: { turbo_method: "delete" } %>
-              </div>
-            </li>
-          <% end %>
-          <li class="list-group-item d-flex justify-content-between bg-body-tertiary">
-            <div class="text-success">
-              <h6 class="my-0">Promo code</h6>
-              <small>EXAMPLECODE</small>
+        <% @cart.cart_items.each do |cart_item| %>
+          <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
+            <div class="flex-grow-1">
+              <h6 class="my-0"><%= cart_item.item.name %></h6>
+              <small class="text-body-secondary"><%= cart_item.item.description %></small>
             </div>
-            <span class="text-success"></span>
+            <span class="text-body-secondary me-3">Quantity: <%= cart_item.quantity %>, ¥<%= cart_item.item.price * cart_item.quantity %></span>
+            <div>
+              <%= link_to "Delete", "/cart/#{cart_item.id}", class: 'btn btn-danger', data: { turbo_method: "delete" } %>
+            </div>
+          </li>
+        <% end %>
+        <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
+          <div class="flex-grow-1">
+            <h6 class="my-0 text-success">Promo code</h6>
+            <small class="text-body-secondary">EXAMPLECODE</small>
+          </div>
+          <span class="text-success me-3"></span> <div>
             <button type="button" class="btn btn-danger">Delete</button>
-          </li>
-          <li class="list-group-item d-flex justify-content-between">
+          </div>
+        </li>
+        <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
+          <div class="flex-grow-1">
             <span>Total (JPY)</span>
+          </div>
+          <div>
             <strong>¥ <%= @total_price %></strong>
-          </li>
+          </div>
+        </li>
         </ul>
 
         <form class="card p-2">
