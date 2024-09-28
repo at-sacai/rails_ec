@@ -1,5 +1,10 @@
 <!-- Navigation-->
 <%= render 'navigation' %>
+<% if flash[:notice] %>
+  <p class="alert alert-success text-center"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p class="alert alert-danger"><%= alert %></p>
+<% end %>
 <!-- Header-->
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
