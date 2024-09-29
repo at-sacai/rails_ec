@@ -1,5 +1,8 @@
 <!-- Navigation-->
 <%= render 'navigation' %>
+<% if flash[:alert] %>
+  <p class="alert alert-danger"><%= flash[:alert] %></p>
+<% end %>
 <!-- Product section-->
 <section class="py-5">
   <div class="container px-4 px-lg-5 my-5">
