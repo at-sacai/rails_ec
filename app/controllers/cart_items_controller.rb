@@ -22,13 +22,13 @@ class CartItemsController < ApplicationController
       redirect_to root_path
     else
       flash[:alert] = 'Added to Cart Failed. Please try again.'
-      render :index, status: :unprocessable_entity
+      redirect_to request.referer
     end
   end
 
   def destroy
     @cart_item = CartItem.find_by(id: params[:id])
     @cart_item.destroy
-    redirect_to cart_path
+    redirect_to request.referer
   end
 end
