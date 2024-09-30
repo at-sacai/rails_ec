@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'cart' => 'cart_items#index'
+  post 'cart/:id/' => 'cart_items#create'
+  delete 'cart/:id/' => 'cart_items#destroy'
   resources :tasks
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
