@@ -13,6 +13,8 @@
 #  updated_at  :datetime         not null
 #
 class Item < ApplicationRecord
+  has_many :cart_items, dependent: :delete_all
+  has_many :carts, through: :cart_items
   validates :name, presence: true
   validates :price, presence: true, numericality: true
   validates :description, presence: true
