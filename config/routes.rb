@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'orders/index'
+  get 'orders/create'
   get 'cart' => 'cart_items#index'
   post 'cart/:id/' => 'cart_items#create'
   delete 'cart/:id/' => 'cart_items#destroy'
