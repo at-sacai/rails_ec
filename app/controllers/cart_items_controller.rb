@@ -3,9 +3,7 @@
 class CartItemsController < ApplicationController
   def index
     @total_price = 0
-    @cart.cart_items.each do |cart_item|
-      @total_price += cart_item.calculate_price
-    end
+    @total_price = @cart.cart_items.sum { |cart_item| cart_item.calculate_price }
   end
 
   def create
