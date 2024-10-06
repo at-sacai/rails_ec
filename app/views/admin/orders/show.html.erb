@@ -6,6 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
         <li class="nav-item"><%= link_to "Admin Home", admin_items_path, class: "nav-link active", 'area-current': :page %></li>
+        <li class="nav-item"><%= link_to "Purchase History", admin_orders_path, class: "nav-link active", 'area-current': :page %></li>
       </ul>
       <div class="pull-right">
         <%= link_to "Add Items", new_admin_item_path, class: "btn btn-primary pull-right", 'area-current': :page %>
@@ -25,24 +26,24 @@
   </div>
 </header>
 <div class="p-5">
-  <h2 class="mb-3">Purchase History</h2>
+  <h2 class="mb-3">Purchase History Detail</h2>
     <div class="container mx-auto">
         <div class="row">
-            <% @orders.each do |order| %>
-            <div class="col-md-6"><h3 class="mb-1">Order ID: <%= order.id %>  <%= link_to '(Detail)', admin_order_path(order), class: "fs-6 text-decoration-none text-dark" %></h3>
+            <div class="col-md-6"><h3 class="mb-1">Order ID: <%= @order.id %></h3>
                 <p class="mb-2">Purchaser</p>
-                <ul class="mb-3">
-                    <li>Fist Name: <%= order.first_name %></li>
-                    <li>Last Name: <%= order.last_name %></li>
-                    <li>Address: <%= order.address %></li>
-                    <li>Address 2 (Optional): <%= order.address_2 %></li>
-                    <li>Country: <%= order.country %></li>
-                    <li>State: <%= order.state %></li>
-                    <li>Zip: <%= order.zip %></li>
-                    <li>Total Price: ¥<%= order.total_price %></li>
-                </ul>
+                    <li>Fist Name: <%= @order.first_name %></li>
+                    <li>Last Name: <%= @order.last_name %></li>
+                    <li>Address: <%= @order.address %></li>
+                    <li>Address 2 (Optional): <%= @order.address_2 %></li>
+                    <li>Country: <%= @order.country %></li>
+                    <li>State: <%= @order.state %></li>
+                    <li>Zip: <%= @order.zip %></li>
+                    <li>Total Price: ¥<%= @order.total_price %></li>
+                <p class="mb-2 mt-2">Oreder Detail</p>
+                <% @order.order_items.each do |order_item| %>
+                    <li><%= order_item.item.name %>(¥<%= order_item.item.price %>) × <%= order_item.quantity %> = ¥<%= order_item.item.price * order_item.quantity %></li>
+                <% end %>
             </div>
-            <% end %>
         </div>
     </div>
 </div>

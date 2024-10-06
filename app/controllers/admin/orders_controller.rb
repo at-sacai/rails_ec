@@ -4,6 +4,10 @@ module Admin
       @orders = Order.all
     end
 
+    def show
+      @order = Order.find_by(id: params[:id])
+    end
+
     def create
       @order = Order.new(order_params)
       @order.total_price = @cart.cart_items.sum { |cart_item| cart_item.calculate_price }
