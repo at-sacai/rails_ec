@@ -44,7 +44,7 @@
                 <p class="mb-1">Oreder Detail</p>
                 <% order.order_items.each do |order_item| %>
                 <ul>
-                    <li><%= order_item.item.name %>(¥<%= order_item.item.price %>) × ¥<%= order_item.quantity %> = <%= order_item.item.price * order_item.quantity %> </li>
+                    <li><%= order_item.item.name %>(¥<%= order_item.item.price %>) × <%= order_item.quantity %> = ¥<%= order_item.item.price * order_item.quantity %> </li>
                 </ul>
                 <% end %>
             </div>
