@@ -4,6 +4,8 @@ class CartItemsController < ApplicationController
   def index
     @total_price = 0
     @total_price = @cart.cart_items.sum { |cart_item| cart_item.calculate_price }
+
+    @order = Order.new(flash[:order])
   end
 
   def create
@@ -17,7 +19,7 @@ class CartItemsController < ApplicationController
       flash[:notice] = 'Added to Cart Complete'
       redirect_to root_path
     else
-      flash[:alert] = 'Added to Cart Failed. Please try again.'
+      flash[:alert] = 'Added to Cart Failed. Please Try Again.'
       redirect_to request.referer
     end
   end
