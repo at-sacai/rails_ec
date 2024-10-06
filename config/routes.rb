@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :items, only: %i[index create show]
   namespace :admin do
     resources :items, only: %i[index new create edit update destroy]
-    resources :orders, only: %i[index show]
+    get 'orders' => 'order_items#index'
+    get 'orders/:id' => 'order_items#show'
   end
 end
