@@ -1,1 +1,56 @@
-
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container px-4 px-lg-5"><%= link_to "Atsuzon", items_path, class: "navbar-brand"%> <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+        <li class="nav-item"><%= link_to "Admin Home", admin_items_path, class: "nav-link active", 'area-current': :page %></li>
+      </ul>
+      <div class="pull-right">
+        <%= link_to "Add Items", new_admin_item_path, class: "btn btn-primary pull-right", 'area-current': :page %>
+      </div>
+    </div>
+  </div>
+</nav>
+<% if flash[:notice] %>
+  <p class="alert alert-success text-center"><%= flash[:notice] %></p>
+<% end %>
+<!-- Header-->
+<header class="bg-dark py-5">
+  <div class="container px-4 px-lg-5 my-5">
+    <div class="text-center text-white">
+      <h1 class="display-4 fw-bolder">Atsuzon</h1>
+    </div>
+  </div>
+</header>
+<div class="p-5">
+  <h2 class="mb-3">Purchase History</h2>
+    <div class="container mx-auto">
+        <div class="row">
+            <% @orders.each do |order| %>
+            <div class="col-md-6"> <h3 class="mb-1">Order ID: <%= order.id %></h3>
+                <p class="mb-1">Purchaser</p>
+                <ul>
+                    <li>Fist Name: <%= order.first_name %></li>
+                    <li>Last Name: <%= order.last_name %></li>
+                    <li>Address: <%= order.address %></li>
+                    <li>Address 2 (Optional): <%= order.address_2 %></li>
+                    <li>Country: <%= order.country %></li>
+                    <li>State: <%= order.state %></li>
+                    <li>Zip: <%= order.zip %></li>
+                    <li>Total Price: ¥<%= order.total_price %></li>
+                </ul>
+                <p class="mb-1">Oreder Detail</p>
+                <% order.order_items.each do |order_item| %>
+                <ul>
+                    <li><%= order_item.item.name %>(¥<%= order_item.item.price %>) × ¥<%= order_item.quantity %> = <%= order_item.item.price * order_item.quantity %> </li>
+                </ul>
+                <% end %>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
+<!-- Footer-->
+<%= render 'footer' %>
