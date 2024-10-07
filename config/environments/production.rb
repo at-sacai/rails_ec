@@ -78,7 +78,7 @@ Rails.application.configure do
     domain: 'gmail.com',
     port: 587,
     user_name: ENV.fetch('GMAIL_USER', nil),
-    password: RENV.fetch('GMAIL_APP_PASSWORD', nil),
+    password: ENV.fetch('GMAIL_APP_PASSWORD', nil),
     authentication: :login
   }
 
