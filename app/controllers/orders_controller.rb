@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
-    @order.total_price = @cart.cart_items.sum { |cart_item| cart_item.calculate_price }
+    @order.total_price = @cart.cart_items.sum(&:calculate_price)
 
     ApplicationRecord.transaction do
       if @order.save

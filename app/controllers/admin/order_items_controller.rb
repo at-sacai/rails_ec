@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Admin
   class OrderItemsController < ApplicationController
     before_action :basic_auth
