@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'cart' => 'cart_items#index'
   post 'cart/:id/' => 'cart_items#create'
   delete 'cart/:id/' => 'cart_items#destroy'
-  resources :orders, only: %i[create]
+  post '/order' => 'orders#create'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

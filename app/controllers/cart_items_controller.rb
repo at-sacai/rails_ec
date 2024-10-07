@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
     @total_price = 0
     @total_price = @cart.cart_items.sum { |cart_item| cart_item.calculate_price }
 
-    @order = Order.new(flash[:order])
+    @order = Order.new
   end
 
   def create
