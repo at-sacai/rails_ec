@@ -26,26 +26,27 @@
 </header>
 <div class="p-5">
   <h2 class="mb-3">Purchase History</h2>
-    <div class="container mx-auto">
-        <div class="row">
-            <% @orders.each do |order| %>
-            <div class="col-md-6"><h3 class="mb-1">Order ID: <%= order.id %>  <%= link_to '(Detail)', admin_path(order), class: "fs-6 text-decoration-none text-dark" %></h3>
-                <p class="mb-2">Purchaser</p>
-                <ul class="mb-3">
-                    <li>Fist Name: <%= order.first_name %></li>
-                    <li>Last Name: <%= order.last_name %></li>
-                    <li>Email: <%= order.email %></li>
-                    <li>Address: <%= order.address %></li>
-                    <li>Address 2 (Optional): <%= order.address_2 %></li>
-                    <li>Country: <%= order.country %></li>
-                    <li>State: <%= order.state %></li>
-                    <li>Zip: <%= order.zip %></li>
-                    <li>Total Price: ¥<%= order.total_price %></li>
-                </ul>
-            </div>
-            <% end %>
+  <div class="container mx-auto">
+    <div class="row">
+      <% @orders.each do |order| %>
+        <div class="col-md-6">
+          <h3 class="mb-1">Order ID: <%= order.id %>  <%= link_to '(Detail)', admin_path(order), class: "fs-6 text-decoration-none text-dark" %></h3>
+          <p class="mb-2">Purchaser</p>
+          <ul class="mb-3">
+            <li>Fist Name: <%= order.first_name %></li>
+            <li>Last Name: <%= order.last_name %></li>
+            <li>Email: <%= order.email %></li>
+            <li>Address: <%= order.address %></li>
+            <li>Address 2 (Optional): <%= order.address_2 %></li>
+            <li>Country: <%= order.country %></li>
+            <li>State: <%= order.state %></li>
+            <li>Zip: <%= order.zip %></li>
+            <li>Total Price: ¥<%= order.total_price %></li>
+          </ul>
         </div>
+      <% end %>
     </div>
+  </div>
 </div>
 <!-- Footer-->
 <%= render 'footer' %>
