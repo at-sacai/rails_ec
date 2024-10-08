@@ -8,11 +8,7 @@ class OrdersController < ApplicationController
     ApplicationRecord.transaction do
       if @order.save
         @cart.cart_items.each do |cart_item|
-          @order_item = OrderItem.new
-          @order_item.order_id = @order.id
-          @order_item.item_id = cart_item.item_id
-          @order_item.quantity = cart_item.quantity
-          @order_item.save
+          order_item = @order.order_items.build(item_id: cart_item.item_id, quantity: cart_item.quantity)
         end
         PurchaseMailer.with(order: @order).thanks_email.deliver_now
         flash[:notice] = 'Purchase Complete.'
