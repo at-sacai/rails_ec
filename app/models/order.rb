@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Order < ApplicationRecord
-  has_many :order_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy, autosave: true
   has_many :items, through: :order_items
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
