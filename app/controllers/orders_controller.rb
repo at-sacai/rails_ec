@@ -7,7 +7,7 @@ class OrdersController < ApplicationController
 
     ApplicationRecord.transaction do
       @cart.cart_items.each do |cart_item|
-        order_item = @order.order_items.build(item_id: cart_item.item_id, quantity: cart_item.quantity)
+        @order.order_items.build(item_id: cart_item.item_id, quantity: cart_item.quantity)
       end
       if @order.save
         PurchaseMailer.with(order: @order).thanks_email.deliver_now
