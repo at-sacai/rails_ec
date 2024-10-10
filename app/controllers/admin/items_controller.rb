@@ -23,10 +23,10 @@ module Admin
       end
 
       if item.save
-        flash[:notice] = "「#{item.name}」Registration complete."
+        flash[:notice] = "「#{item.name}」Registration Complete."
         redirect_to admin_items_path
       else
-        flash[:alert] = 'Registration failed.'
+        flash[:alert] = 'Registration Failed.'
         render 'new', status: :unprocessable_entity
       end
     end
@@ -35,10 +35,10 @@ module Admin
       @item = Item.with_attached_image.find(params[:id])
 
       if @item.update(item_params)
-        flash[:notice] = 'Update complete.'
+        flash[:notice] = 'Update Complete.'
         redirect_to admin_items_path
       else
-        flash[:alert] = 'Update failed.'
+        flash[:alert] = 'Update Failed.'
         redirect_to admin_item_path
       end
     end
@@ -46,7 +46,7 @@ module Admin
     def destroy
       item = Item.with_attached_image.find(params[:id])
       item.destroy
-      flash[:notice] = 'Deletion complete.'
+      flash[:notice] = 'Deletion Complete.'
       redirect_to admin_items_path, status: :see_other
     end
 

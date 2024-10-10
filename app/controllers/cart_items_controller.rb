@@ -3,9 +3,9 @@
 class CartItemsController < ApplicationController
   def index
     @total_price = 0
-    @cart.cart_items.each do |cart_item|
-      @total_price += cart_item.calculate_price
-    end
+    @total_price = @cart.cart_items.sum(&:calculate_price)
+
+    @order = Order.new
   end
 
   def create
@@ -19,7 +19,7 @@ class CartItemsController < ApplicationController
       flash[:notice] = 'Added to Cart Complete'
       redirect_to root_path
     else
-      flash[:alert] = 'Added to Cart Failed. Please try again.'
+      flash[:alert] = 'Added to Cart Failed. Please Try Again.'
       redirect_to request.referer
     end
   end
