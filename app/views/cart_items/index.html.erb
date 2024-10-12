@@ -43,13 +43,13 @@
             </li>
           <% end %>
           <% if @coupon %>
-          <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
-            <div class="flex-grow-1">
-              <h6 class="my-0 text-success">Coupon Code</h6>
-              <small class="text-body-secondary"><%= @coupon.code %></small>
-            </div>
-            <span class="text-success me-3">¥ -<%= @coupon.discount_price %></span>
-          </li>
+            <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
+              <div class="flex-grow-1">
+                <h6 class="my-0 text-success">Coupon Code</h6>
+                <small class="text-body-secondary"><%= @coupon.code %></small>
+              </div>
+              <span class="text-success me-3">¥ -<%= @coupon.discount_price %></span>
+            </li>
           <% end %>
           <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
             <div class="flex-grow-1">
