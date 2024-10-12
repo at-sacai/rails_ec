@@ -7,10 +7,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
-value_seed = [*'a'..'z', *'0'..'9']
-10.times do
-  Coupon.create!(
-    code: "#{value_seed.sample(8).join}",
-    discount_price: Random.rand(100..1000)
-  )
-end
+Coupon.create!(
+  code: 'abcdefg',
+  discount_price: 1000
+)
