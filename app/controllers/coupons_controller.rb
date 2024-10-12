@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CouponsController < ApplicationController
   def create
     unless Coupon.exists?(code: params[:code])

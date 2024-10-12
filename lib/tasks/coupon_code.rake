@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 namespace :coupon_code do
   desc 'Create Coupon'
   task generate: :environment do
