@@ -11,8 +11,7 @@ class OrdersController < ApplicationController
         @order.order_items.build(item_id: cart_item.item_id, quantity: cart_item.quantity)
       end
       if @order.save
-        @coupon.order_id = @order.id
-        @coupon.save!
+        apply_coupon if @coupon
         PurchaseMailer.with(order: @order).thanks_email.deliver_now
         flash[:notice] = 'Purchase Complete.'
         clear_session
@@ -39,5 +38,10 @@ class OrdersController < ApplicationController
     session.delete(:cart_id)
     session.delete(:coupon_code)
     @cart.destroy
+  end
+
+  def apply_coupon
+    @coupon.order_id = @order.id
+    @coupon.save!
   end
 end
