@@ -3,6 +3,7 @@
 class Order < ApplicationRecord
   has_many :order_items, dependent: :destroy, autosave: true
   has_many :items, through: :order_items
+  has_one :coupon, dependent: :destroy
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :first_name, presence: true

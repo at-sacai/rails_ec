@@ -4,7 +4,9 @@ class CartItemsController < ApplicationController
   def index
     @total_price = 0
     @total_price = @cart.cart_items.sum(&:calculate_price)
-
+    @coupon = Coupon.find_by(code: session[:coupon_code])
+    discount_price = @coupon ? @coupon.discount_price : 0
+    @total_price -= discount_price
     @order = Order.new
   end
 

@@ -10,6 +10,11 @@
     </div>
   </div>
 </nav>
+<% if flash[:notice] %>
+  <p class="alert alert-success text-center"><%= flash[:notice] %></p>
+<% elsif flash[:alert] %>
+  <p class="alert alert-danger text-center"><%= flash[:alert] %></p>
+<% end %>
 <header class="bg-dark py-5">
   <div class="container px-4 px-lg-5 my-5">
     <div class="text-center text-white">
@@ -37,16 +42,15 @@
               </div>
             </li>
           <% end %>
-          <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
-            <div class="flex-grow-1">
-              <h6 class="my-0 text-success">Promo code</h6>
-              <small class="text-body-secondary">EXAMPLECODE</small>
-            </div>
-            <span class="text-success me-3"></span>
-            <div>
-              <button type="button" class="btn btn-danger">Delete</button>
-            </div>
-          </li>
+          <% if @coupon %>
+            <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
+              <div class="flex-grow-1">
+                <h6 class="my-0 text-success">Coupon Code</h6>
+                <small class="text-body-secondary"><%= @coupon.code %></small>
+              </div>
+              <span class="text-success me-3">¥ -<%= @coupon.discount_price %></span>
+            </li>
+          <% end %>
           <li class="list-group-item d-flex align-items-center justify-content-between lh-sm">
             <div class="flex-grow-1">
               <span>Total (JPY)</span>
@@ -56,12 +60,12 @@
             </div>
           </li>
         </ul>
-        <form class="card p-2">
+        <%= form_with url: coupons_path, local: true, html: { class: 'card p-2' }, method: :post do |form| %>
           <div class="input-group">
-            <input type="text" class="form-control" placeholder="Promo code">
-            <button type="submit" class="btn btn-secondary">Redeem</button>
+            <%= form.text_field :code, class: "form-control", placeholder: "Coupon Code"%>
+            <%= form.submit 'Apply', class: "btn btn-secondary"%>
           </div>
-        </form>
+        <% end %>
       </div>
       <div class="col-md-7 col-lg-8">
         <h2 class="mb-3">Billing Address</h2>
